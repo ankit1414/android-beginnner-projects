@@ -1,2 +1,2 @@
 # basketball score counter app
-screenshot --> court counter.jpeg
+screenshot --> courtcounter.jpeg
