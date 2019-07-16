@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     tWhippedCream = 1;
                 else
                     tWhippedCream = 0;
+                displayPrice(no_of_coffee *(5+tChocolate+tWhippedCream));
             }
         });
         final CheckBox chocolate = findViewById(R.id.chocolate_checkbox);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     tChocolate =0;
                 }
+                displayPrice(no_of_coffee *(5+tChocolate+tWhippedCream));
             }
         });
 
@@ -90,7 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayPrice(double n){
         TextView textView = findViewById(R.id.price_text_view);
-        textView.setText("$" + n);
+        if(no_of_coffee == 0){
+            textView.setText("$0");
+        } else {
+            textView.setText("$" + n);
+        }
     }
     private void displaySummary(double number){
         TextView textView= findViewById(R.id.price_text_view);
