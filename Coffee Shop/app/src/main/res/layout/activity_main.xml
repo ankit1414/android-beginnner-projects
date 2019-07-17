@@ -22,7 +22,7 @@
             android:layout_marginRight="16dp"
             android:background="@android:color/white"
             android:hint="Name"
-            android:inputType="text"
+            android:inputType="textCapCharacters"
             android:padding="10dp"
             android:textSize="18sp"
             android:translationZ="10dp"
@@ -44,34 +44,22 @@
             android:translationZ="10dp"
 
             />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/phone_id"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Toppings"
-            android:textSize="16sp"
+            android:layout_marginRight="16dp"
+            android:background="@android:color/white"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:translationZ="10dp"
 
             />
 
-        <CheckBox
-            android:id="@+id/whipped_creame_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:paddingLeft="24dp"
-            android:text="Whipped Cream" />
-
-        <CheckBox
-            android:id="@+id/chocolate_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:paddingLeft="24dp"
-            android:text="chocolate" />
 
         <TextView
             android:id="@+id/text1"
@@ -117,6 +105,34 @@
                 android:text="+"
                 android:textSize="16sp" />
         </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Toppings"
+            android:textSize="16sp"
+
+            />
+
+        <CheckBox
+            android:id="@+id/whipped_creame_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="24dp"
+            android:text="Whipped Cream" />
+
+        <CheckBox
+            android:id="@+id/chocolate_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="24dp"
+            android:text="chocolate" />
+
 
         <TextView
             android:id="@+id/text3"
@@ -124,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="order summary"
+            android:text="Price"
             android:textAllCaps="true"
             android:textSize="16dp" />
 

@@ -1,5 +1,7 @@
 package com.example.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private static double tWhippedCream= 0, tChocolate = 0;
     private int no_of_coffee = 0;
-    private String name,address;
+    private String name,address,mobileno;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -78,8 +80,9 @@ public class MainActivity extends AppCompatActivity {
         name = et.getText().toString();
         EditText etAddress  = findViewById(R.id.address_id);
         address = etAddress.getText().toString();
-        displaySummary(no_of_coffee);
-        Toast.makeText(getApplicationContext() , "order confirmed!" ,Toast.LENGTH_SHORT).show();
+        EditText etmobile = findViewById(R.id.phone_id);
+        mobileno = etmobile.getText().toString();
+        sendorder(no_of_coffee);
         //no_of_coffee = 0;
         //display(no_of_coffee);
         //displayPrice(no_of_coffee);
@@ -98,9 +101,10 @@ public class MainActivity extends AppCompatActivity {
             textView.setText("$" + n);
         }
     }
-    private void displaySummary(double number){
-        TextView textView= findViewById(R.id.price_text_view);
+    private void sendorder(double number){
+        //TextView textView= findViewById(R.id.price_text_view);
         String message = "Customer Name : " + name +"\nDelivery address : " + address
+                + "\nMobile : " + mobileno
                         +"\nQuantity : " + no_of_coffee +"\nToppings :" ;
         CheckBox WhippedCream = findViewById(R.id.whipped_creame_checkbox);
         if(WhippedCream.isChecked()){
@@ -111,7 +115,23 @@ public class MainActivity extends AppCompatActivity {
             message = message + " \" Chocolate\"";
         }
         message = message + "\nPayable amount : $" + number*(5+tChocolate+tWhippedCream);
-        textView.setText(message);
+        //textView.setText(message);
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL , new String[] {"ankitbhardwaj4141@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT , "order from Mr/Ms "+name);
+        intent.putExtra(Intent.EXTRA_TEXT , message);
+        if(no_of_coffee == 0){
+            Toast.makeText(getApplicationContext() , "invalid order" , Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext() , "Please confirm the order by sending  email to us" ,Toast.LENGTH_SHORT).show();
+
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        }
+
     }
 
 
