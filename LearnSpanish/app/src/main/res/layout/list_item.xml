@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:minHeight="88dp"
+    android:paddingTop="2dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/image_id"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            tools:src="@drawable/ic_launcher_background" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:id="@+id/textContainerView"
+        >
+
+        <TextView
+            android:id="@+id/spanish_word"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:textStyle="bold"
+            android:textColor ="#000000"
+            android:textSize="17sp"
+            tools:text="spanish" />
+
+        <TextView
+            android:id="@+id/english_word"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            tools:text="english" />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

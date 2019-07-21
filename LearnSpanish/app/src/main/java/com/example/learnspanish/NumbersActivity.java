@@ -2,11 +2,7 @@ package com.example.learnspanish;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,35 +11,31 @@ public class NumbersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
-        ArrayList<String> nums = new ArrayList<>();
-        nums.add(new Word("uno" , "one" ).toString());
-        nums.add(new Word("dos","two").toString());
-        nums.add(new Word("tres","three").toString());
-        nums.add(new Word("cuatro","four").toString());
-        nums.add(new Word("cinco","five").toString());
-        nums.add(new Word("seis","six").toString());
-        nums.add(new Word("siete","seven").toString());
-        nums.add(new Word("ocho" ,"eight").toString());
-        nums.add(new Word("nueve","nine").toString());
-        nums.add(new Word("diez","ten").toString());
-        nums.add(new Word("once","eleven").toString());
-        nums.add(new Word(" doce","twelve").toString());
-        nums.add(new Word("trece","thirteen").toString());
-        nums.add(new Word("catorce","fourteen").toString());
-        nums.add(new Word("quince","fifteen").toString());
-        nums.add(new Word("dieciséis","sixteen").toString());
-        nums.add(new Word("diecisiete","seventeen").toString());
-        nums.add(new Word("dieciocho","eighteen").toString());
-
+        setContentView(R.layout.base_view);
+        ArrayList<Word> nums = new ArrayList<>();
+        nums.add(new Word("uno" , "one",R.drawable.one ));
+        nums.add(new Word("dos","two",R.drawable.two));
+        nums.add(new Word("tres","three",R.drawable.three));
+        nums.add(new Word("cuatro","four",R.drawable.four));
+        nums.add(new Word("cinco","five",R.drawable.five));
+        nums.add(new Word("seis","six",R.drawable.six));
+        nums.add(new Word("siete","seven",R.drawable.seven));
+        nums.add(new Word("ocho" ,"eight",R.drawable.eight));
+        nums.add(new Word("nueve","nine",R.drawable.nine));
+        nums.add(new Word("diez","ten",R.drawable.ten));
+        nums.add(new Word("once","eleven",R.drawable.eleven));
+        nums.add(new Word(" doce","twelve",R.drawable.i12));
+        nums.add(new Word("trece","thirteen",R.drawable.i13));
+        nums.add(new Word("catorce","fourteen",R.drawable.i14));
+        nums.add(new Word("quince","fifteen",R.drawable.i15));
+        nums.add(new Word("dieciséis","sixteen",R.drawable.i16));
+        nums.add(new Word("diecisiete","seventeen",R.drawable.i17));
+        nums.add(new Word("dieciocho","eighteen",R.drawable.i18));
+        nums.add(new Word("diecinueve","nineteen",R.drawable.i19));
+        nums.add(new Word("veinte","twinty",R.drawable.i20));
         ListView rootview = findViewById(R.id.rootview);
 
-//        for(int i=0; i<nums.size(); i++){
-//            TextView temp = new TextView(this);
-//            temp.setText(nums.get(i));
-//            rootview.addView(temp);
-//        }
-        ArrayAdapter<String> numberAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1 , nums);
+        WordAdapter numberAdapter = new WordAdapter(this, nums ,R.color.category_numbers);
         rootview.setAdapter(numberAdapter);
 
 
