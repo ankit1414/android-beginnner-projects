@@ -2,11 +2,13 @@ package com.example.learnspanish;
 
 import android.content.Context;
 import android.media.Image;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    private  int mcolorid;
+    private  static int mcolorid;
     @Override
     public View getView(int position,View convertView, ViewGroup parent) {
         View listofobjects = convertView;
@@ -37,7 +39,10 @@ public class WordAdapter extends ArrayAdapter<Word> {
             image.setVisibility(View.GONE);
         }
         View view = listofobjects.findViewById(R.id.textContainerView);
-        view.setBackgroundColor(this.mcolorid);
+        //LinearLayout linearLayout= convertView.findViewById(R.id.textContainerView);
+        //linearLayout.setBackgroundColor(mcolorid);
+        int color  = ContextCompat.getColor(getContext() , mcolorid);
+        view.setBackgroundColor(color);
 
         return listofobjects;
 
@@ -45,7 +50,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
     public WordAdapter(Context context, ArrayList<Word> objects , int colorid) {
         super(context, 0, objects);
-        this.mcolorid = colorid;
+        mcolorid = colorid;
     }
 
 }
