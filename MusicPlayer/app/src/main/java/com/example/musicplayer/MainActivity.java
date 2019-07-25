@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         playbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //mediaPlayer = MediaPlayer.create(MainActivity.this , R.raw.on_my_way);
+                checkandinitilize();
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
@@ -36,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
         pausebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.pause();
-                //mediaPlayer.prepareAsync();
-
+                if(mediaPlayer != null && mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    //mediaPlayer.prepareAsync();
+                }
             }
         });
 
@@ -46,9 +48,25 @@ public class MainActivity extends AppCompatActivity {
         stopbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.stop();
-                mediaPlayer.prepareAsync();
+                if(mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.prepareAsync();
+                }
             }
         });
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mediaPlayer.release();
+        mediaPlayer = null;
+    }
+
+    public void checkandinitilize(){
+        if(mediaPlayer == null){
+            mediaPlayer = MediaPlayer.create(this , R.raw.on_my_way);
+        }
+    }
+
 }
