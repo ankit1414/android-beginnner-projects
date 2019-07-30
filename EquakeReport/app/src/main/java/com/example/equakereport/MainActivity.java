@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -46,14 +47,45 @@ public class MainActivity extends AppCompatActivity {
                     StringBuilder tosb = new StringBuilder(to.getText().toString());
                     StringBuilder fromsb = new StringBuilder(from.getText().toString());
                     if(tosb.charAt(4) == '-' && tosb.charAt(7) == '-' && fromsb.charAt(4) == '-' && fromsb.charAt(7) == '-') {
-                        BackgrountDataFetch thread = new BackgrountDataFetch(MainActivity.this ,  listofEarthquakesActivity);
-                        thread.execute();
-                        Toast.makeText(getApplicationContext() ,"Please wait... Loading data!" , Toast.LENGTH_LONG ).show();
+                        String [] arr = TextUtils.split(to.getText().toString() , "-");
+                        //Toast.makeText(getApplicationContext() , "arr[0] = " +arr[0] , Toast.LENGTH_LONG).show();
+                        int yearentered = Integer.parseInt(arr[0]);
+                        int monthentered = Integer.parseInt(arr[1]);
+                        int dateentered = Integer.parseInt(arr[2]);
+
+                        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+                        String [] arrtoday = TextUtils.split(date , "-");
+
+                        int yearc = Integer.parseInt(arrtoday[0]);
+                        int monthc = Integer.parseInt(arrtoday[1]);
+                        int datec = Integer.parseInt(arrtoday[2]);
+
+                        String [] arrfrom = TextUtils.split(from.getText().toString() , "-");
+
+                        int yearf = Integer.parseInt(arrfrom[0]);
+                        int monthf = Integer.parseInt(arrfrom[1]);
+                        int datef = Integer.parseInt(arrfrom[2]);
+
+
+                        if(yearentered>yearc || (yearentered == yearc && monthentered>monthc) || (yearentered == yearc && monthentered == monthc && dateentered>datec)){
+                            Toast.makeText(getApplicationContext() , "To date field is incorrect" , Toast.LENGTH_SHORT).show();
+                        } else if(yearf>yearentered || (yearf== yearentered && monthf>monthentered) || (yearf == yearentered && monthf == monthentered && datef>dateentered)){
+                            Toast.makeText(getApplicationContext() , "entered fields are invalid please recheck!" , Toast.LENGTH_SHORT).show();
+                        }
+
+                        else {
+                            BackgrountDataFetch thread = new BackgrountDataFetch(MainActivity.this, listofEarthquakesActivity);
+                            thread.execute();
+                            Toast.makeText(getApplicationContext(), "Please wait... Loading data!", Toast.LENGTH_LONG).show();
+                        }
 
 
                     } else {
                         Toast.makeText(getApplicationContext() , "please enter in valid format" , Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Toast.makeText(getApplicationContext() , "please enter in valid format" , Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -67,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         ListofEarthquakesActivity listofEarthquakesActivity;
         StringBuilder websitesb = new StringBuilder("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=");
         //&endtime=2019-07-28&minmagnitude=5";
-        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        //String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         //StringBuilder oneweek = new StringBuilder(date);
         String website = "";
 
@@ -96,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("message",s);
             startActivity(intent);
             //listofEarthquakesActivity.setadapterandarraylist(s);
-            Log.v("date is " , ": " +date);
+            //Log.v("date is " , ": " +date);
 
 
         }
@@ -118,8 +150,8 @@ public class MainActivity extends AppCompatActivity {
 
                 urlConnection  =(HttpsURLConnection)url.openConnection();
                 urlConnection.setRequestMethod("GET");
-                urlConnection.setReadTimeout(10000);
-                urlConnection.setConnectTimeout(15000);
+                urlConnection.setReadTimeout(100000);
+                urlConnection.setConnectTimeout(150000);
                 urlConnection.connect();
 
                 inputStream = urlConnection.getInputStream();

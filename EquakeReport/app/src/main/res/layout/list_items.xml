@@ -19,6 +19,7 @@
         android:textSize="15sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
         tools:text = "mumbai"
         android:layout_weight="4"/>
     <TextView
