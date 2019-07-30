@@ -27,7 +27,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        tools:text = "02-5-2019"/>
+        tools:text = "02-5-2019"
+        android:gravity="center"/>
 
 
 </LinearLayout>

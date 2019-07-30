@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/input_screen"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@android:color/holo_red_light"
+    >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fill the Details as specified"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"
+        android:textColor="@android:color/black"/>
+
+    <EditText
+        android:id="@+id/from_et"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="FROM  :    (format = YYYY-MM-DD)"
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:translationZ="5dp"
+        android:layout_marginBottom="16dp"
+        android:inputType="date"
+        />
+
+    <EditText
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/to_et"
+        android:padding="8dp"
+        android:hint="TO       :    (format = YYYY-MM-DD)"
+        android:translationZ="5dp"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/white"
+        android:inputType="date"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get data"
+        android:id="@+id/submit_button"
+        android:background="@android:color/holo_blue_dark"/>
+
+
+
+</LinearLayout>

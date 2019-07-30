@@ -39,7 +39,7 @@ public final class UtilityClass {
 
                 String time  = properties.getString("time");
 
-                SimpleDateFormat formatter = new SimpleDateFormat("EEE, d MMM yyyy 'at' HH:mm:ss z");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 String date = formatter.format(Long.parseLong(time));
 
                 Edetail temp = new Edetail(mag , location , date);
