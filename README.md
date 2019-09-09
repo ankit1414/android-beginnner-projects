@@ -3,6 +3,7 @@ here i am beginner android developer :D
 
 ## 1) coffee shop
 #coffee ordering app
+This app sends order summary email to the shop owner afterwards they can proceed on it.
 ![coffee_shop](https://user-images.githubusercontent.com/45892437/64524329-e7520280-d31b-11e9-8018-4b402c4e71f8.jpeg)
 
 
