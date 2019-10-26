@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="@android:color/holo_red_light"
+    android:background="@drawable/back_design"
     >
 
 
@@ -27,11 +27,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="FROM  :    (format = YYYY-MM-DD)"
-        android:padding="8dp"
-        android:background="@android:color/white"
+        android:padding="12dp"
+        android:background="@drawable/ed_design"
         android:translationZ="5dp"
         android:layout_marginBottom="16dp"
-        android:inputType="date"
+        android:ems="10"
+        android:inputType="text"
         />
 
     <EditText
@@ -41,18 +42,21 @@
         android:layout_height="wrap_content"
 
         android:id="@+id/to_et"
-        android:padding="8dp"
+        android:padding="12dp"
+        android:ems="10"
         android:hint="TO       :    (format = YYYY-MM-DD)"
         android:translationZ="5dp"
         android:layout_marginBottom="30dp"
-        android:background="@android:color/white"
-        android:inputType="date"/>
+        android:background="@drawable/ed_design"
+        android:inputType="text"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="get data"
         android:id="@+id/submit_button"
-        android:background="@android:color/holo_blue_dark"/>
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:background="@drawable/circular_edge_button_design"/>
+
 
 
 

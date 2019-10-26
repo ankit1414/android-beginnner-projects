@@ -1,9 +1,11 @@
 package com.example.equakereport;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -31,15 +34,20 @@ public class MainActivity extends AppCompatActivity {
 
     EditText from ;
     EditText to;
+    private ProgressDialog mdialog;
+    //Toolbar mtoolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //mtoolbar = findViewById(R.id.custom_toolbar);
+        //setSupportActionBar(mtoolbar);
         from = findViewById(R.id.from_et);
         to = findViewById(R.id.to_et);
         final ListofEarthquakesActivity listofEarthquakesActivity = new ListofEarthquakesActivity();
         Button submitbtn = findViewById(R.id.submit_button);
+        mdialog = new ProgressDialog(this);
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
                         else {
                             BackgrountDataFetch thread = new BackgrountDataFetch(MainActivity.this, listofEarthquakesActivity);
+                            mdialog.setMessage("Collecting data...");
+                            mdialog.show();
                             thread.execute();
-                            Toast.makeText(getApplicationContext(), "Please wait... Loading data!", Toast.LENGTH_LONG).show();
+
+                            //Toast.makeText(getApplicationContext(), "Please wait... Loading data!", Toast.LENGTH_LONG).show();
                         }
 
 
@@ -126,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
             Intent intent  = new Intent(MainActivity.this , ListofEarthquakesActivity.class);
             intent.putExtra("message",s);
+            mdialog.dismiss();
             startActivity(intent);
             //listofEarthquakesActivity.setadapterandarraylist(s);
             //Log.v("date is " , ": " +date);
