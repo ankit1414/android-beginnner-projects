@@ -20,4 +20,4 @@ This app sends order summary email to the shop owner afterwards they can proceed
 ## 4) Equake Report
 #this app fetches data from USGS web api and allows user to filter result by date.
 
-![Equake_report](https://user-images.githubusercontent.com/45892437/64524343-f042d400-d31b-11e9-8f39-491c17487744.jpeg)
+![Equake_report](https://user-images.githubusercontent.com/45892437/75800108-0eefc800-5d9f-11ea-9579-fa879ce94de1.jpeg)
